@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Скачать программу | Genshin Impact Style</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;700&display=swap');
+
         :root {
-            --primary-color: #deb74a;
-            --secondary-color: #72778c;
-            --background-color: #ece5d8;
-            --text-color: #4a5366;
+            --primary-color: #63cdda; /* Цвет, напоминающий элементы аниме */
+            --secondary-color: #efbb35;
+            --background-color: #f0f4f8;
+            --text-color: #2b2d42;
+            --button-hover-color: #52b0b0;
         }
-        
+
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             margin: 0;
@@ -24,33 +25,34 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-image: url('https://picsum.photos/id/1055/1920/1080');
+            background-image: url('https://i.postimg.cc/MZMW3hLP/wallpaperflare-com-wallpaper.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
-        
+
         .container {
             max-width: 90%;
             width: 600px;
             text-align: center;
             padding: 40px;
-            background-color: rgba(236, 229, 216, 0.9);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--primary-color);
         }
-        
+
         h1 {
             color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
             font-size: 2.5em;
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn {
             background-color: var(--primary-color);
-            color: var(--background-color);
+            color: white;
             padding: 15px 30px;
             font-size: 1.2em;
             border: none;
@@ -62,30 +64,70 @@
             margin: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn:hover {
-            background-color: #c9a43b;
+            background-color: var(--button-hover-color);
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
-        
+
         .btn-secondary {
             background-color: var(--secondary-color);
+            color: white;
         }
-        
+
         .btn-secondary:hover {
-            background-color: #5f6476;
+            background-color: #dfa823;
         }
-        
+
+        .dark-theme {
+            --primary-color: #263c5a; /* Темный синий цвет для темной темы */
+            --secondary-color: #94692e;
+            --background-color: #1e1e2f;
+            --text-color: #f4f4f4;
+            --button-hover-color: #1c5a78;
+            background-image: url('https://i.postimg.cc/DwFnZmwH/wallpaperflare-com-wallpaper-1.jpg');
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--background-color);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
-            
+
             h1 {
                 font-size: 2em;
             }
-            
+
             .btn {
                 padding: 12px 24px;
                 font-size: 1em;
@@ -98,6 +140,35 @@
         <h1>Скачать программу</h1>
         <a href="shika (1) (1).zip" download class="btn">Скачать программу</a>
         <a href="инструкция.txt" download class="btn btn-secondary">Скачать инструкцию</a>
+
+        <!-- Выпадающее меню -->
+        <div class="dropdown">
+            <button class="btn">Меню</button>
+            <div class="dropdown-content">
+                <a href="https://example.com" target="_blank">Перейти на другую вкладку</a>
+            </div>
+        </div>
+
+        <!-- Кнопка для переключения темы -->
+        <button onclick="toggleTheme()" class="btn btn-secondary">Переключить тему</button>
     </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.onload = function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        };
+    </script>
 </body>
 </html>
